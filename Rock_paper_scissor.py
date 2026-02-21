@@ -9,7 +9,7 @@ comp_op=random.randint(0,2)
 
 
 print("Do you want to play Rock/paper/scissors ")
-q=input("Enter here:")
+q=input("Enter here{yes/no}:")
 if q.lower()=="yes":
     print("Well here we go.")
 elif q.lower()=="no":
@@ -37,6 +37,12 @@ while True:
     elif user_pick=="paper" and comp_pick=="rock":
         print("You won!")
         user_score+=1
+    elif user_pick=="paper" and comp_pick=="paper":
+        print("Draw!")
+    elif user_pick=="rock" and comp_pick=="rock":
+        print("Draw!")
+    elif user_pick=="scissor" and comp_pick=="scissor":
+        print("Draw!")
     elif user_pick=="scissor" and comp_pick=="paper":
         print("You won!")
         user_score+=1
