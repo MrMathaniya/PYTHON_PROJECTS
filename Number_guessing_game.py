@@ -1,6 +1,7 @@
 from random import randint
 no=randint(1,10)
 guesses=0
+chances=5
 
 while True:
     guess=int(input("Guess a number between 1 and 10: "))
@@ -10,9 +11,20 @@ while True:
         break
     else:
         # print("Opps! You guessed wrong, try again")
-        if guess>no:
+        if chances==0:
+            print("NO MORE CHANCES!\n YOU LOST!!!")
+            exit()
+        elif guess>no:
             print(f"The number is small than {guess}")
+            chances-=1
+            print(f"{chances} chances left!")
+        elif guess<no:
+            print(f"The number is larger than {guess}")
+            chances-=1
+            print(f"{chances} chances left!")
         else:
-            print(f"THe number is greater than {guess}")
-
-print(f"you've guessed the number in {guesses} guesses!")
+           exit()
+if no==guess:
+    print(f"you've guessed the number in {guesses} guesses!")
+else:
+    exit()
