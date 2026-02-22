@@ -30,7 +30,7 @@ class student:
              f"Name:{self.name}\n "
              f"Total marks:{self.total()}\n"
              f" Average marks:{self.avg()}\n "
-             f"Grade:{self.grade()}\n\n")
+             f"Grade:{self.grade()}\n")
 
 def view_details():
     try:
@@ -41,6 +41,18 @@ def view_details():
          print("File not found")
 
 
+def valid_marks_limit(subject_number):
+    while True:
+        try:
+            marks = int(input(f"Enter marks of sub {subject_number}: "))
+
+            if 0 <= marks <= 100:
+                return marks
+            else:
+                print("Invalid marks! Enter between 0 and 100.")
+        except ValueError:
+            print("Invalid input! Please enter numbers only.")
+
 
 while True:
     print("-----Student Result Manager-----")
@@ -50,15 +62,15 @@ while True:
     choice=int(input("Enter your choice:"))
     if choice==1:
         name=input("Enter student name: ")
-        marks1=int(input("Enter marks of sub 1: "))
-        marks2=int(input("Enter marks of sub 2: "))
-        marks3=int(input("Enter marks of sub 3: "))
-        marks4=int(input("Enter marks of sub 4: "))
-        marks5=int(input("Enter marks of sub 5: "))
+        marks1=valid_marks_limit(1)
+        marks2=valid_marks_limit(2)
+        marks3=valid_marks_limit(3)
+        marks4=valid_marks_limit(4)
+        marks5=valid_marks_limit(5)
 
         student1=student(name,marks1,marks2,marks3,marks4,marks5)
-        print("Total marks:",student1.total())
-        print("Average marks:",student1.avg())
+        print("Total marks:",student1.total(),"/500")
+        print("Average marks:",student1.avg(),"/100")
         print("Grade:",student1.grade())
         student1.store_details()
         print("Student Details saved successfully!")
